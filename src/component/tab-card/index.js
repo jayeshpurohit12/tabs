@@ -7,7 +7,7 @@ const TabCard = ({path, name}) => {
   return (
     <View
       style={{
-        paddingHorizontal: 15,
+        paddingHorizontal: 18,
         borderLeftWidth: 1,
         borderTopWidth: 1,
         borderRightWidth: 1,
