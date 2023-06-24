@@ -1,12 +1,5 @@
 import React, {useEffect, useReducer, useRef} from 'react';
-import {
-  Pressable,
-  StyleSheet,
-  View,
-  Text,
-  LayoutChangeEvent,
-  Dimensions,
-} from 'react-native';
+import {Pressable, View, Text, LayoutChangeEvent} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {
   SafeAreaProvider,
@@ -19,12 +12,16 @@ import Animated, {
   useDerivedValue,
 } from 'react-native-reanimated';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import {styles} from './styles';
+import Profile from '../Profile';
+import Diary from '../Diary';
+import Health from '../Health';
+import Meal from '../Meal';
+import Notes from '../Notes';
 
 const Tab = createMaterialTopTabNavigator();
 
 const AnimatedSvg = Animated.createAnimatedComponent(Svg);
-
-const width = Dimensions.get('window').width;
 
 const TabBar = () => {
   return (
@@ -32,29 +29,17 @@ const TabBar = () => {
       <View style={{flex: 1}}>
         <NavigationContainer>
           <Tab.Navigator tabBar={props => <AnimatedTabBar {...props} />}>
-            <Tab.Screen component={PlaceholderScreen} name="Profile" />
-            <Tab.Screen component={PlaceholderScreen} name="Diary" />
-            <Tab.Screen component={PlaceholderScreen} name="Health" />
-            <Tab.Screen component={PlaceholderScreen} name="Meal" />
-            <Tab.Screen component={PlaceholderScreen} name="Notes" />
+            <Tab.Screen component={Profile} name="Profile" />
+            <Tab.Screen component={Diary} name="Diary" />
+            <Tab.Screen component={Health} name="Health" />
+            <Tab.Screen component={Meal} name="Meal" />
+            <Tab.Screen component={Notes} name="Notes" />
           </Tab.Navigator>
         </NavigationContainer>
       </View>
     </SafeAreaProvider>
   );
 };
-
-// ------------------------------------------------------------------
-
-const PlaceholderScreen = () => {
-  return (
-    <View style={{flex: 1}}>
-      <Text>hello</Text>
-    </View>
-  );
-};
-
-// ------------------------------------------------------------------
 
 const AnimatedTabBar = ({state: {index: activeIndex, routes}, navigation}) => {
   const {bottom} = useSafeAreaInsets();
@@ -122,8 +107,6 @@ const AnimatedTabBar = ({state: {index: activeIndex, routes}, navigation}) => {
     </View>
   );
 };
-
-// ------------------------------------------------------------------
 
 type TabBarComponentProps = {
   active?: boolean;
@@ -238,11 +221,12 @@ const TabBarComponent = ({
         style={[styles.iconContainer, animatedIconContainerStyles]}>
         {tabBarIcon}
         <Text
-          style={{
-            textAlign: 'center',
-            fontSize: 12,
-            color: active ? '#40C1AC' : 'grey',
-          }}>
+          style={[
+            styles.routeName,
+            {
+              color: active ? '#40C1AC' : 'grey',
+            },
+          ]}>
           {routeName}
         </Text>
       </Animated.View>

@@ -42,4 +42,8 @@ export const styles = StyleSheet.create({
     borderBottomColor: '#40C1AC',
     backgroundColor: '#40C1AC',
   },
+  routeName: {
+    textAlign: 'center',
+    fontSize: 12,
+  },
 });
