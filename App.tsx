@@ -220,8 +220,11 @@ const TabBarComponent = ({
   const tabBarIcon = showTabBarIcon();
 
   return (
-    <Pressable onPress={onPress} onLayout={onLayout} style={styles.component}>
-      <Animated.View style={animatedComponentCircleStyles} />
+    <Pressable
+      onPress={onPress}
+      onLayout={onLayout}
+      style={[styles.component, active && {zIndex: 1}]}>
+      <Animated.View style={[animatedComponentCircleStyles]} />
       {!active && (
         <Svg width={100} height={59} viewBox="0 0 100 59">
           <Path
@@ -249,11 +252,11 @@ const TabBarComponent = ({
 
 const styles = StyleSheet.create({
   tabBar: {
-    marginTop: 50,
+    marginTop: 10,
   },
   activeBackground: {
     position: 'absolute',
-    zIndex: 1,
+    // zIndex: 1,
   },
   tabBarContainer: {
     flexDirection: 'row',
@@ -264,7 +267,7 @@ const styles = StyleSheet.create({
     width: '19%',
     height: 60,
     left: -10,
-    zIndex: 2,
+    // zIndex: 2,
   },
   componentCircle: {
     flex: 1,
@@ -280,7 +283,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '90%',
     paddingTop: 10,
-    zIndex: 2,
+    // zIndex: 2,
   },
   bottomTabLineContainer: {
     borderBottomWidth: 1.8,
