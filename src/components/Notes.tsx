@@ -3,7 +3,13 @@ import React from 'react';
 
 const Notes = () => {
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'white',
+      }}>
       <Text style={{fontSize: 30}}>Notes</Text>
     </View>
   );
