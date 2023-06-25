@@ -49,13 +49,10 @@ const AnimatedTabBar = ({state: {index: activeIndex, routes}, navigation}) => {
   };
 
   const [layout, dispatch] = useReducer(reducer, []);
-  console.log(layout);
 
   const handleLayout = (event: LayoutChangeEvent, index: number) => {
     dispatch({x: event.nativeEvent.layout.x, index});
   };
-
-  // animations ------------------------------------------------------
 
   const xOffset = useDerivedValue(() => {
     if (layout.length !== routes.length) return 0;
@@ -88,20 +85,19 @@ const AnimatedTabBar = ({state: {index: activeIndex, routes}, navigation}) => {
 
       <AnimatedSvg
         width={100}
-        height={63}
+        height={60}
         viewBox="0 0 100 59"
         style={[styles.activeBackground, animatedStyles]}>
         <Path
-          fill="#40C1AC"
-          d="M100 58s-11.165.048-16.415-27.228c-1.725-8.958-3.426-15.466-5.299-19.978C75.427 3.9 70.777 0 65.922 0H34.078c-4.863 0-9.505 3.899-12.364 10.794-1.873 4.512-3.574 11.02-5.3 19.978C11.166 58.048 0 58 0 58"
+          stroke="#40C1AC"
+          strokeMiterlimit={10}
+          strokeWidth={1.5}
+          fill="none"
+          d="M1 59s11.165.048 16.415-27.228c1.725-8.958 3.426-15.466 5.299-19.978C25.573 4.9 30.223 1 35.078 1h31.844c4.863 0 9.505 3.899 12.364 10.794 1.873 4.512 3.574 11.02 5.3 19.978C89.834 59.048 101 59 101 59"
         />
         <Path
-          fill="#40C1AC"
-          d="M100 58s-11.165.033-16.415-18.564c-1.725-6.108-3.426-10.546-5.299-13.622-2.859-4.701-7.509-7.36-12.364-7.36H34.078c-4.863 0-9.505 2.659-12.364 7.36-1.873 3.076-3.574 7.514-5.3 13.622C11.166 58.033 0 58 0 58"
-        />
-        <Path
-          fill="#F0F8F6"
-          d="M98 58s-8.5 3.955-15.791-25.99c-1.66-8.55-3.296-14.764-5.098-19.07-2.75-6.582-7.223-10.304-11.894-10.304H34.583c-4.679 0-9.144 3.722-11.894 10.304-1.802 4.306-3.232 10.593-5.098 19.07C11 61.955 1.8 58 1.8 58"
+          fill="#fff"
+          d="M11 52h80l.5 1 .5.5 1.5 2 .5.5 1 1 1.5 1 1.227.722L99 59.4l1 .2h1V63H1v-3.3l1-.1 1-.267L5.5 58l2-1.5L9 55l1-1.167L11 52ZM14.14 46H87.8l.7 1.5.5 1 .5 1 .5 1 1 1.5H11l1-1.5 1-2 .5-1 .64-1.5Z"
         />
       </AnimatedSvg>
     </View>

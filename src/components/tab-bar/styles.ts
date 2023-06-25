@@ -5,6 +5,7 @@ const width = Dimensions.get('window').width;
 export const styles = StyleSheet.create({
   tabBar: {
     marginTop: 10,
+    backgroundColor: 'white',
   },
   activeBackground: {
     position: 'absolute',
